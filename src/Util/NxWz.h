@@ -32,13 +32,13 @@
 #include <nlnx/bitmap.hpp>
 namespace nxwz = nl;
 #else
-namespace nxwz
-{
-// 
 #include <wz/Wz.hpp>
 #include <wz/Node.hpp>
 #include <wz/File.hpp>
 #include <wz/Reader.hpp>
+namespace nxwz
+{
+//TODO: Remove the dummy implement
 class bitmap
 {
 public:
@@ -157,7 +157,8 @@ inline std::string operator+(node, char const*) { return ""; }
 
 namespace nx
 {
-    static nxwz::node Base, Character, Effect, Etc, Item, Map, Map001, Map002, Map2, Mob, Mob001, Mob2, Morph, Npc, Quest, Reactor, Skill, Skill001, Skill002, Sound, Sound001, Sound2, String, TamingMob, UI;
+    static nxwz::node base, character, effect, etc, item, map, mapPretty, mapLatest, map001, mob, morph, npc, quest, reactor, skill, sound, string, tamingmob, ui;
+    inline void load_all(){};
 }
 }// end of nxwz
 #endif

@@ -241,8 +241,10 @@ target_include_directories(msclient
     Util
 
   SYSTEM PRIVATE
-    ${PROJECT_SOURCE_DIR}/thirdparty/
+    ${PROJECT_SOURCE_DIR}/thirdparty
+    ${PROJECT_SOURCE_DIR}/thirdparty/wzlibcpp
     ${PROJECT_SOURCE_DIR}/thirdparty/wzlibcpp/include
+    ${PROJECT_SOURCE_DIR}/thirdparty/wzlibcpp/mio/include
     ${PROJECT_SOURCE_DIR}/thirdparty/asio/asio/include
     ${PROJECT_SOURCE_DIR}/thirdparty/stb
 
