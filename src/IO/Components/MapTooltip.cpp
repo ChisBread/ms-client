@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "MapTooltip.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Constants.h"
 #include "GameInfo.h"
@@ -26,8 +26,8 @@ MapTooltip::MapTooltip() :
     description_(""),
     fill_width_(MIN_WIDTH),
     fill_height_(0) {
-    nl::node Frame = nl::nx::ui["UIToolTip.img"]["Item"]["Frame2"];
-    nl::node WorldMap = nl::nx::ui["UIWindow2.img"]["ToolTip"]["WorldMap"];
+    nxwz::node Frame = nxwz::nx::ui["UIToolTip.img"]["Item"]["Frame2"];
+    nxwz::node WorldMap = nxwz::nx::ui["UIWindow2.img"]["ToolTip"]["WorldMap"];
 
     frame_ = Frame;
     cover_ = Frame["cover"];

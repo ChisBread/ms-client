@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIStatusBar.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Character/ExpTable.h"
 #include "../../Gameplay/Stage.h"
@@ -65,13 +65,13 @@ UIStatusBar::UIStatusBar(const CharStats &st, uint8_t channel_count) :
         stat += "800";
     }
 
-    nl::node mainBar = nl::nx::ui["StatusBar3.img"]["mainBar"];
-    nl::node status = mainBar[stat];
-    nl::node EXPBar = mainBar["EXPBar"];
-    nl::node EXPBarRes = EXPBar[VWIDTH_];
-    nl::node menu = mainBar["menu"];
-    nl::node quickSlot = mainBar["quickSlot"];
-    nl::node submenu = mainBar["submenu"];
+    nxwz::node mainBar = nxwz::nx::ui["StatusBar3.img"]["mainBar"];
+    nxwz::node status = mainBar[stat];
+    nxwz::node EXPBar = mainBar["EXPBar"];
+    nxwz::node EXPBarRes = EXPBar[VWIDTH_];
+    nxwz::node menu = mainBar["menu"];
+    nxwz::node quickSlot = mainBar["quickSlot"];
+    nxwz::node submenu = mainBar["submenu"];
 
     exp_pos_ = Point<int16_t>(0, 87);
 

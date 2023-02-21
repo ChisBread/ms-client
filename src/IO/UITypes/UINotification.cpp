@@ -15,7 +15,7 @@
 //	along with MSClient.  If not, see <https://www.gnu.org/licenses/>.
 #include "UINotification.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Components/MapleButton.h"
 #include "../Net/Packets/PlayerInteractionPackets.h"
@@ -29,7 +29,7 @@ auto fn_player_interaction = []<typename... T>(T && ...args) {
 
 UINotification::UINotification(std::string message) :
     UIElement({ 500, 400 }, { 200, 100 }) {
-    nl::node src = nl::nx::ui["UIWindow2.img"]["FadeYesNo"];
+    nxwz::node src = nxwz::nx::ui["UIWindow2.img"]["FadeYesNo"];
 
     sprites_.emplace_back(src["backgrnd"],
                           Point<int16_t>(500, 400) - position_);

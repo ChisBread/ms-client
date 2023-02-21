@@ -15,13 +15,13 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "TextTooltip.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Constants.h"
 
 namespace ms {
 TextTooltip::TextTooltip() {
-    nl::node Frame = nl::nx::ui["UIToolTip.img"]["Item"]["Frame2"];
+    nxwz::node Frame = nxwz::nx::ui["UIToolTip.img"]["Item"]["Frame2"];
 
     frame_ = Frame;
     cover_ = Frame["cover"];

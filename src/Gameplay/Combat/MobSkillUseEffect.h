@@ -17,7 +17,7 @@
 
 #include <cstdint>
 #include <functional>
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <vector>
 
 #include "../../Graphics/Animation.h"
@@ -33,7 +33,7 @@ public:
 protected:
     class Effect {
     public:
-        Effect(const nl::node &src) {
+        Effect(const nxwz::node &src) {
             animation_ = src;
             z_ = src["z"];
         }
@@ -53,7 +53,7 @@ protected:
 // An effect which displays an animation over the mob's position
 class MobSingleUseEffect : public MobSkillUseEffect {
 public:
-    MobSingleUseEffect(const nl::node &src);
+    MobSingleUseEffect(const nxwz::node &src);
 
     void apply(Mob &mob) const override;
 
@@ -64,7 +64,7 @@ private:
 // An effect which displays multiple animations over the mob's position
 class MobMultiUseEffect : public MobSkillUseEffect {
 public:
-    MobMultiUseEffect(const nl::node &src, bool area_warning = false);
+    MobMultiUseEffect(const nxwz::node &src, bool area_warning = false);
 
     void apply(Mob &mob) const override;
 

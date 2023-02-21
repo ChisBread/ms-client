@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "Afterimage.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "StringHandling.h"
 
@@ -24,16 +24,16 @@ Afterimage::Afterimage(int32_t skill_id,
                        const std::string &name,
                        const std::string &stance_name,
                        int16_t level) {
-    nl::node src;
+    nxwz::node src;
 
     if (skill_id > 0) {
         std::string strid = string_format::extend_id(skill_id, 7);
-        src = nl::nx::skill[strid.substr(0, 3) + ".img"]["skill"][strid]
+        src = nxwz::nx::skill[strid.substr(0, 3) + ".img"]["skill"][strid]
                            ["afterimage"][name][stance_name];
     }
 
     if (!src) {
-        src = nl::nx::character["Afterimage"][name + ".img"][level / 10]
+        src = nxwz::nx::character["Afterimage"][name + ".img"][level / 10]
                                [stance_name];
     }
 
@@ -41,7 +41,7 @@ Afterimage::Afterimage(int32_t skill_id,
     first_frame_ = 0;
     displayed_ = false;
 
-    for (const nl::node &sub : src) {
+    for (const nxwz::node &sub : src) {
         auto frame = string_conversion::or_default<uint8_t>(sub.name(), 255);
 
         if (frame < 255) {

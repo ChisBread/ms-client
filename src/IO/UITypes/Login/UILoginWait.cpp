@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UILoginWait.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <utility>
 
 #include "../../Net/PacketProcessor.h"
@@ -26,8 +26,8 @@ UILoginWait::UILoginWait() : UILoginWait([]() {}) {}
 
 UILoginWait::UILoginWait(std::function<void()> okhandler) :
     okhandler_(std::move(okhandler)) {
-    nl::node Loading = nl::nx::ui["Login.img"]["Notice"]["Loading"];
-    nl::node backgrnd = Loading["backgrnd"];
+    nxwz::node Loading = nxwz::nx::ui["Login.img"]["Notice"]["Loading"];
+    nxwz::node backgrnd = Loading["backgrnd"];
 
     sprites_.emplace_back(backgrnd);
     sprites_.emplace_back(Loading["circle"], Point<int16_t>(127, 70));

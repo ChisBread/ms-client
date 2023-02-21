@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UITermsOfService.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <utility>
 
 #include "../Components/MapleButton.h"
@@ -32,8 +32,8 @@ UITermsOfService::UITermsOfService(std::function<void()> oh) :
     okhandler_(std::move(oh)),
     offset_(0),
     unit_rows_(1) {
-    nl::node Login = nl::nx::ui["Login.img"];
-    nl::node TOS = Login["TOS"];
+    nxwz::node Login = nxwz::nx::ui["Login.img"];
+    nxwz::node TOS = Login["TOS"];
 
     sprites_.emplace_back(TOS, Point<int16_t>(399, 250));
 

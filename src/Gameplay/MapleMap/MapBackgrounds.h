@@ -23,7 +23,7 @@
 namespace ms {
 class Background {
 public:
-    Background(const nl::node &src);
+    Background(const nxwz::node &src);
 
     void draw(double viewx, double viewy, float alpha) const;
 
@@ -65,7 +65,7 @@ private:
 
 class MapBackgrounds {
 public:
-    MapBackgrounds(const nl::node &src);
+    MapBackgrounds(const nxwz::node &src);
 
     MapBackgrounds();
 

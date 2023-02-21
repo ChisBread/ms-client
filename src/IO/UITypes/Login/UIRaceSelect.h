@@ -103,10 +103,10 @@ private:
     Text version_;
     Point<int16_t> pos_;
     Point<int16_t> pos_zero_;
-    nl::node order_;
-    nl::node hotlist_;
-    nl::node newlist_;
-    nl::node bgm_;
+    nxwz::node order_;
+    nxwz::node hotlist_;
+    nxwz::node newlist_;
+    nxwz::node bgm_;
     Sprite hotlabel_;
     Sprite hotlabel_zero_;
     Sprite newlabel_;

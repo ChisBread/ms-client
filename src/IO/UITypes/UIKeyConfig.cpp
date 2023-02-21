@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIKeyConfig.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <string>
 
 #include "../../Data/ItemData.h"
@@ -42,12 +42,12 @@ UIKeyConfig::UIKeyConfig(const Inventory &in_inventory,
     keyboard_ = &UI::get().get_keyboard();
     staged_mappings_ = keyboard_->get_maplekeys();
 
-    nl::node KeyConfig = nl::nx::ui["StatusBar3.img"]["KeyConfig"];
+    nxwz::node KeyConfig = nxwz::nx::ui["StatusBar3.img"]["KeyConfig"];
 
     icon_ = KeyConfig["icon"];
     key_ = KeyConfig["key"];
 
-    nl::node backgrnd = KeyConfig["backgrnd"];
+    nxwz::node backgrnd = KeyConfig["backgrnd"];
     Texture bg = backgrnd;
     Point<int16_t> bg_dimensions = bg.get_dimensions();
 
@@ -55,7 +55,7 @@ UIKeyConfig::UIKeyConfig(const Inventory &in_inventory,
     sprites_.emplace_back(KeyConfig["backgrnd2"]);
     sprites_.emplace_back(KeyConfig["backgrnd3"]);
 
-    nl::node BtClose3 = nl::nx::ui["Basic.img"]["BtClose3"];
+    nxwz::node BtClose3 = nxwz::nx::ui["Basic.img"]["BtClose3"];
     buttons_[Buttons::CLOSE] = std::make_unique<MapleButton>(
         BtClose3,
         Point<int16_t>(bg_dimensions.x() - 18, 3));

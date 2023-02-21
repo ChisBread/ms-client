@@ -15,9 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "DamageNumber.h"
 
-#include <nlnx/node.hpp>
-#include <nlnx/nx.hpp>
-
+#include "../Util/NxWz.h"
 #include "../Constants.h"
 
 namespace ms {
@@ -158,27 +156,27 @@ int16_t DamageNumber::row_height(bool critical) {
 void DamageNumber::init() {
     charsets_[DamageNumber::Type::NORMAL].set(
         false,
-        nl::nx::effect["BasicEff.img"]["NoRed1"],
+        nxwz::nx::effect["BasicEff.img"]["NoRed1"],
         Charset::Alignment::LEFT);
     charsets_[DamageNumber::Type::NORMAL].set(
         true,
-        nl::nx::effect["BasicEff.img"]["NoRed0"],
+        nxwz::nx::effect["BasicEff.img"]["NoRed0"],
         Charset::Alignment::LEFT);
     charsets_[DamageNumber::Type::CRITICAL].set(
         false,
-        nl::nx::effect["BasicEff.img"]["NoCri1"],
+        nxwz::nx::effect["BasicEff.img"]["NoCri1"],
         Charset::Alignment::LEFT);
     charsets_[DamageNumber::Type::CRITICAL].set(
         true,
-        nl::nx::effect["BasicEff.img"]["NoCri0"],
+        nxwz::nx::effect["BasicEff.img"]["NoCri0"],
         Charset::Alignment::LEFT);
     charsets_[DamageNumber::Type::TOPLAYER].set(
         false,
-        nl::nx::effect["BasicEff.img"]["NoViolet1"],
+        nxwz::nx::effect["BasicEff.img"]["NoViolet1"],
         Charset::Alignment::LEFT);
     charsets_[DamageNumber::Type::TOPLAYER].set(
         true,
-        nl::nx::effect["BasicEff.img"]["NoViolet0"],
+        nxwz::nx::effect["BasicEff.img"]["NoViolet0"],
         Charset::Alignment::LEFT);
 }
 

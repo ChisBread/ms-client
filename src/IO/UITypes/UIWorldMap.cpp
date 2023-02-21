@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIWorldMap.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Gameplay/Stage.h"
 #include "../IO/Components/MapleButton.h"
@@ -24,12 +24,12 @@
 
 namespace ms {
 UIWorldMap::UIWorldMap() : UIDragElement<PosMAP>() {
-    nl::node close = nl::nx::ui["Basic.img"]["BtClose3"];
-    nl::node WorldMap = nl::nx::ui["UIWindow2.img"]["WorldMap"];
-    nl::node WorldMapSearch = WorldMap["WorldMapSearch"];
-    nl::node Border = WorldMap["Border"]["0"];
-    nl::node backgrnd = WorldMapSearch["backgrnd"];
-    nl::node MapHelper = nl::nx::map["MapHelper.img"]["worldMap"];
+    nxwz::node close = nxwz::nx::ui["Basic.img"]["BtClose3"];
+    nxwz::node WorldMap = nxwz::nx::ui["UIWindow2.img"]["WorldMap"];
+    nxwz::node WorldMapSearch = WorldMap["WorldMapSearch"];
+    nxwz::node Border = WorldMap["Border"]["0"];
+    nxwz::node backgrnd = WorldMapSearch["backgrnd"];
+    nxwz::node MapHelper = nxwz::nx::map["MapHelper.img"]["worldMap"];
 
     cur_pos_ = MapHelper["curPos"];
 
@@ -269,10 +269,10 @@ void UIWorldMap::set_search(bool enable) {
 }
 
 void UIWorldMap::update_world(const std::string &map) {
-    nl::node WorldMap = nl::nx::map["WorldMap"][map + ".img"];
+    nxwz::node WorldMap = nxwz::nx::map["WorldMap"][map + ".img"];
 
     if (!WorldMap) {
-        WorldMap = nl::nx::map["WorldMap"]["WorldMap.img"];
+        WorldMap = nxwz::nx::map["WorldMap"]["WorldMap.img"];
     }
 
     base_img_ = WorldMap["BaseImg"][0];
@@ -291,8 +291,8 @@ void UIWorldMap::update_world(const std::string &map) {
 
     size_t i = Buttons::BT_LINK0;
 
-    for (const nl::node &link : WorldMap["MapLink"]) {
-        nl::node l = link["link"];
+    for (const nxwz::node &link : WorldMap["MapLink"]) {
+        nxwz::node l = link["link"];
         Texture link_image = l["linkImg"];
 
         link_images_[i] = link_image;
@@ -306,22 +306,22 @@ void UIWorldMap::update_world(const std::string &map) {
         i++;
     }
 
-    nl::node mapImage = nl::nx::map["MapHelper.img"]["worldMap"]["mapImage"];
+    nxwz::node mapImage = nxwz::nx::map["MapHelper.img"]["worldMap"]["mapImage"];
 
     map_spots_.clear();
 
-    for (const nl::node &list : WorldMap["MapList"]) {
-        nl::node desc = list["desc"];
-        nl::node mapNo = list["mapNo"];
-        nl::node path = list["path"];
-        nl::node spot = list["spot"];
-        nl::node title = list["title"];
-        nl::node type = list["type"];
-        nl::node marker = mapImage[type];
+    for (const nxwz::node &list : WorldMap["MapList"]) {
+        nxwz::node desc = list["desc"];
+        nxwz::node mapNo = list["mapNo"];
+        nxwz::node path = list["path"];
+        nxwz::node spot = list["spot"];
+        nxwz::node title = list["title"];
+        nxwz::node type = list["type"];
+        nxwz::node marker = mapImage[type];
 
         std::vector<int32_t> map_ids;
 
-        for (const nl::node &map_no : mapNo) {
+        for (const nxwz::node &map_no : mapNo) {
             map_ids.push_back(map_no);
         }
 

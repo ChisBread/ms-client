@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "ItemTooltip.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Constants.h"
 #include "../Data/ItemData.h"
@@ -23,9 +23,9 @@
 namespace ms {
 // TODO: Add blue dot next to name
 ItemTooltip::ItemTooltip() {
-    nl::node Item = nl::nx::ui["UIToolTip.img"]["Item"];
-    nl::node Frame = Item["Frame2"];
-    nl::node ItemIcon = Item["ItemIcon"];
+    nxwz::node Item = nxwz::nx::ui["UIToolTip.img"]["Item"];
+    nxwz::node Frame = Item["Frame2"];
+    nxwz::node ItemIcon = Item["ItemIcon"];
 
     frame_ = Frame;
     cover_ = Frame["cover"];

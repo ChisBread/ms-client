@@ -15,7 +15,7 @@
 //	along with MSClient.  If not, see <https://www.gnu.org/licenses/>.
 #include "UITrade.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Components/MapleButton.h"
 #include "../Net/Packets/PlayerInteractionPackets.h"
@@ -28,7 +28,7 @@ auto fn_player_interaction = []<typename... T>(T && ...args) {
 }  // namespace
 
 UITrade::UITrade() {
-    nl::node src = nl::nx::ui["UIWindow2.img"]["TradingRoom"];
+    nxwz::node src = nxwz::nx::ui["UIWindow2.img"]["TradingRoom"];
 
     sprites_.emplace_back(src["backgrnd"], position_);
     sprites_.emplace_back(src["backgrnd2"], position_);

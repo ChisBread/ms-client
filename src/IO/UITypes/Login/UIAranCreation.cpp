@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIAranCreation.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Audio/Audio.h"
 #include "../../Configuration.h"
@@ -50,12 +50,12 @@ UIAranCreation::UIAranCreation() :
                     Color::Name::LEMONGRASS,
                     "Ver. " + version_text);
 
-    nl::node Login = nl::nx::ui["Login.img"];
-    nl::node Common = Login["Common"];
-    nl::node CustomizeChar = Login["CustomizeChar"]["2000"];
-    nl::node back = nl::nx::map001["Back"]["login.img"]["back"];
-    nl::node board = CustomizeChar["board"];
-    nl::node genderSelect = CustomizeChar["genderSelect"];
+    nxwz::node Login = nxwz::nx::ui["Login.img"];
+    nxwz::node Common = Login["Common"];
+    nxwz::node CustomizeChar = Login["CustomizeChar"]["2000"];
+    nxwz::node back = nxwz::nx::map001["Back"]["login.img"]["back"];
+    nxwz::node board = CustomizeChar["board"];
+    nxwz::node genderSelect = CustomizeChar["genderSelect"];
 
     sky_ = back["2"];
     cloud_ = back["27"];
@@ -137,11 +137,11 @@ UIAranCreation::UIAranCreation() :
     wepname_ =
         Text(Text::Font::A11M, Text::Alignment::CENTER, Color::Name::BLACK);
 
-    nl::node mkinfo = nl::nx::etc["MakeCharInfo.img"]["Info"];
+    nxwz::node mkinfo = nxwz::nx::etc["MakeCharInfo.img"]["Info"];
 
     for (size_t i = 0; i < 2; i++) {
         bool f;
-        nl::node CharGender;
+        nxwz::node CharGender;
 
         if (i == 0) {
             f = true;

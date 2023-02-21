@@ -27,7 +27,7 @@
 #include <windows.h>
 #endif
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 namespace ms {
 namespace {
@@ -43,20 +43,20 @@ UICashShop::UICashShop() :
     mvp_grade_(1),
     mvp_exp_(0.07f),
     list_offset_(0) {
-    nl::node CashShop = nl::nx::ui["CashShop.img"];
-    nl::node Base = CashShop["Base"];
-    nl::node backgrnd = Base["backgrnd"];
-    nl::node BestNew = Base["BestNew"];
-    nl::node Preview = Base["Preview"];
-    nl::node CSTab = CashShop["CSTab"];
-    nl::node CSGLChargeNX = CSTab["CSGLChargeNX"];
-    nl::node CSStatus = CashShop["CSStatus"];
-    nl::node CSPromotionBanner = CashShop["CSPromotionBanner"];
-    nl::node CSMVPBanner = CashShop["CSMVPBanner"];
-    nl::node CSItemSearch = CashShop["CSItemSearch"];
-    nl::node CSChar = CashShop["CSChar"];
-    nl::node CSList = CashShop["CSList"];
-    nl::node CSEffect = CashShop["CSEffect"];
+    nxwz::node CashShop = nxwz::nx::ui["CashShop.img"];
+    nxwz::node Base = CashShop["Base"];
+    nxwz::node backgrnd = Base["backgrnd"];
+    nxwz::node BestNew = Base["BestNew"];
+    nxwz::node Preview = Base["Preview"];
+    nxwz::node CSTab = CashShop["CSTab"];
+    nxwz::node CSGLChargeNX = CSTab["CSGLChargeNX"];
+    nxwz::node CSStatus = CashShop["CSStatus"];
+    nxwz::node CSPromotionBanner = CashShop["CSPromotionBanner"];
+    nxwz::node CSMVPBanner = CashShop["CSMVPBanner"];
+    nxwz::node CSItemSearch = CashShop["CSItemSearch"];
+    nxwz::node CSChar = CashShop["CSChar"];
+    nxwz::node CSList = CashShop["CSList"];
+    nxwz::node CSEffect = CashShop["CSEffect"];
 
     sprites_.emplace_back(backgrnd);
     sprites_.emplace_back(BestNew, Point<int16_t>(139, 346));
@@ -176,7 +176,7 @@ UICashShop::UICashShop() :
     item_line_ = Base["line"];
     item_none_ = Base["noItem"];
 
-    for (const nl::node &item_label : CSEffect) {
+    for (const nxwz::node &item_label : CSEffect) {
         item_labels_.emplace_back(item_label);
     }
 

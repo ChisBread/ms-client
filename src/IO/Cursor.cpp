@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "Cursor.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Constants.h"
 
@@ -26,7 +26,7 @@ Cursor::Cursor() {
 }
 
 void Cursor::init() {
-    nl::node src = nl::nx::ui["Basic.img"]["Cursor"];
+    nxwz::node src = nxwz::nx::ui["Basic.img"]["Cursor"];
 
     for (auto iter : animations_) {
         iter.second = src[iter.first];

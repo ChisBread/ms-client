@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIWorldSelect.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Audio/Audio.h"
 #include "../../Net/Packets/LoginPackets.h"
@@ -69,12 +69,12 @@ UIWorldSelect::UIWorldSelect() :
     channelid_ = Setting<DefaultChannel>::get().load();
     uint8_t regionid = Setting<DefaultRegion>::get().load();
 
-    nl::node obj = nl::nx::mapLatest["Obj"]["login.img"];
-    nl::node login = nl::nx::ui["Login.img"];
+    nxwz::node obj = nxwz::nx::mapLatest["Obj"]["login.img"];
+    nxwz::node login = nxwz::nx::ui["Login.img"];
     world_select_ = login["WorldSelect"];
     world_src_ = world_select_["BtWorld"]["release"];
     channel_src_ = world_select_["BtChannel"];
-    nl::node common = login["Common"];
+    nxwz::node common = login["Common"];
 
     set_region(regionid);
 
@@ -477,7 +477,7 @@ void UIWorldSelect::set_region(uint8_t regionid) {
     world_map_[Buttons::BT_WORLD3] = Worlds::ELYSIUM1;
     world_map_[Buttons::BT_WORLD4] = Worlds::REBOOT1;
 
-    nl::node region = world_src_["index"][regionid];
+    nxwz::node region = world_src_["index"][regionid];
 
     worlds_background_ = region["layer:bg"];
 
@@ -488,7 +488,7 @@ void UIWorldSelect::set_region(uint8_t regionid) {
         world_textures_.emplace_back(channel_src_["release"]["layer:" + world]);
         recommended_world_textures_.emplace_back(world_select_["world"][world]);
 
-        nl::node worldbtn = world_src_["button:" + world];
+        nxwz::node worldbtn = world_src_["button:" + world];
 
         buttons_[Buttons::BT_WORLD0 + i] = std::make_unique<TwoSpriteButton>(
             worldbtn["normal"]["0"],

@@ -16,7 +16,7 @@
 #include "Body.h"
 
 #include <array>
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <string>
 
 #include "StringHandling.h"
@@ -24,17 +24,17 @@
 namespace ms {
 Body::Body(int32_t skin, const BodyDrawInfo &drawinfo) {
     std::string strid = string_format::extend_id(skin, 2);
-    nl::node bodynode = nl::nx::character["000020" + strid + ".img"];
-    nl::node headnode = nl::nx::character["000120" + strid + ".img"];
+    nxwz::node bodynode = nxwz::nx::character["000020" + strid + ".img"];
+    nxwz::node headnode = nxwz::nx::character["000120" + strid + ".img"];
 
     for (const auto &[stance, stance_name] : Stance::names) {
-        nl::node stancenode = bodynode[stance_name];
+        nxwz::node stancenode = bodynode[stance_name];
 
         if (!stancenode) {
             continue;
         }
 
-        for (int frame = 0; nl::node framenode = stancenode[frame]; ++frame) {
+        for (int frame = 0; nxwz::node framenode = stancenode[frame]; ++frame) {
             for (const auto &partnode : framenode) {
                 std::string part = partnode.name();
 
@@ -69,7 +69,7 @@ Body::Body(int32_t skin, const BodyDrawInfo &drawinfo) {
                 }
             }
 
-            if (nl::node headsfnode = headnode[stance_name][frame]["head"]) {
+            if (nxwz::node headsfnode = headnode[stance_name][frame]["head"]) {
                 Point<int16_t> shift =
                     drawinfo.get_head_position(stance, frame);
 

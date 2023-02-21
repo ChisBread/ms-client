@@ -15,12 +15,12 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
-#include <nlnx/node.hpp>
 #include <unordered_map>
 
 #include "../Error.h"
 #include "../MSClient.h"
 #include "../Template/EnumMap.h"
+#include "../Util/NxWz.h"
 
 namespace ms {
 class Sound {
@@ -59,7 +59,7 @@ public:
 
     Sound(Name name);
     Sound(int32_t itemid);
-    Sound(const nl::node &src);
+    Sound(const nxwz::node &src);
     Sound();
 
     void play() const;
@@ -73,9 +73,9 @@ private:
 
     static void play(size_t id);
 
-    static size_t add_sound(const nl::node &src);
-    static void add_sound(Name name, const nl::node &src);
-    static void add_sound(const std::string &itemid, const nl::node &src);
+    static size_t add_sound(const nxwz::node &src);
+    static void add_sound(Name name, const nxwz::node &src);
+    static void add_sound(const std::string &itemid, const nxwz::node &src);
 
     static std::string format_id(int32_t itemid);
 

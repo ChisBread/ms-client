@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIChatBar.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Net/Packets/MessagingPackets.h"
 #include "../Components/MapleButton.h"
@@ -36,11 +36,11 @@ UIChatBar::UIChatBar() : UIDragElement<PosCHAT>(Point<int16_t>(410, -5)) {
     row_pos_ = 0;
     row_max_ = -1;
 
-    nl::node chat = nl::nx::ui["StatusBar3.img"]["chat"];
-    nl::node ingame = chat["ingame"];
-    nl::node view = ingame["view"];
-    nl::node input = ingame["input"];
-    nl::node chatTarget = chat["common"]["chatTarget"];
+    nxwz::node chat = nxwz::nx::ui["StatusBar3.img"]["chat"];
+    nxwz::node ingame = chat["ingame"];
+    nxwz::node view = ingame["view"];
+    nxwz::node input = ingame["input"];
+    nxwz::node chatTarget = chat["common"]["chatTarget"];
 
     chatspace_[0] = view["min"]["top"];
     chatspace_[1] = view["min"]["center"];

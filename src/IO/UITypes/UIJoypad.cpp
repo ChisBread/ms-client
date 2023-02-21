@@ -15,17 +15,17 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIJoypad.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Components/MapleButton.h"
 
 namespace ms {
-// TODO: Add combo boxes nl::nx::ui["Basic.img"]["ComboBox"] / ["ComboBox5"];
+// TODO: Add combo boxes nxwz::nx::ui["Basic.img"]["ComboBox"] / ["ComboBox5"];
 UIJoypad::UIJoypad() : UIDragElement<PosJOYPAD>() {
     alternative_settings_ = false;  // TODO: Get user's key settings type
 
-    nl::node JoyPad = nl::nx::ui["UIWindow.img"]["JoyPad"];
-    nl::node Basic = nl::nx::ui["Basic.img"];
+    nxwz::node JoyPad = nxwz::nx::ui["UIWindow.img"]["JoyPad"];
+    nxwz::node Basic = nxwz::nx::ui["Basic.img"];
 
     backgrnd_[true] = JoyPad["backgrnd_alternative"];
     backgrnd_[false] = JoyPad["backgrnd_classic"];

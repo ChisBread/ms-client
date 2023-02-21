@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UISoftKey.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <utility>
 
 #include "../../Constants.h"
@@ -32,12 +32,12 @@ UISoftKey::UISoftKey(OkCallback ok,
     tooltip_position_(tooltip_pos) {
     Point<int16_t> screen_adj = Point<int16_t>(-1, 0);
 
-    nl::node SoftKey = nl::nx::ui["Login.img"]["Common"]["SoftKey"];
-    nl::node backgrnd = SoftKey["backgrnd"];
+    nxwz::node SoftKey = nxwz::nx::ui["Login.img"]["Common"]["SoftKey"];
+    nxwz::node backgrnd = SoftKey["backgrnd"];
 
-    nl::node Tab = SoftKey["Tab"];
-    nl::node TabNormal = Tab["normal"];
-    nl::node TabSelected = Tab["selected"];
+    nxwz::node Tab = SoftKey["Tab"];
+    nxwz::node TabNormal = Tab["normal"];
+    nxwz::node TabSelected = Tab["selected"];
 
     sprites_.emplace_back(backgrnd, screen_adj);
     sprites_.emplace_back(SoftKey["backgrnd2"]);

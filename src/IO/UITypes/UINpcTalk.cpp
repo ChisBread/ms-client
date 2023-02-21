@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UINpcTalk.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Components/MapleButton.h"
 #include "../Gameplay/Stage.h"
@@ -39,8 +39,8 @@ UINpcTalk::UINpcTalk() :
     formatted_text_(""),
     formatted_text_pos_(0),
     timestep_(0) {
-    nl::node UIWindow2 = nl::nx::ui["UIWindow2.img"];
-    nl::node UtilDlgEx = UIWindow2["UtilDlgEx"];
+    nxwz::node UIWindow2 = nxwz::nx::ui["UIWindow2.img"];
+    nxwz::node UtilDlgEx = UIWindow2["UtilDlgEx"];
 
     top_ = UtilDlgEx["t"];
     fill_ = UtilDlgEx["c"];
@@ -61,7 +61,7 @@ UINpcTalk::UINpcTalk() :
     // TODO: Replace when _inlink is fixed
     // buttons[Buttons::NO] = std::make_unique<MapleButton>(UtilDlgEx["BtNo"]);
 
-    nl::node Quest = UIWindow2["Quest"];
+    nxwz::node Quest = UIWindow2["Quest"];
 
     buttons_[Buttons::NO] = std::make_unique<MapleButton>(Quest["BtNo"]);
     buttons_[Buttons::OK] = std::make_unique<MapleButton>(UtilDlgEx["BtOK"]);
@@ -285,7 +285,7 @@ std::string UINpcTalk::format_text(const std::string &tx,
 
         if (end != std::string::npos) {
             std::string namestr =
-                nl::nx::string["Npc.img"][std::to_string(npcid)]["name"];
+                nxwz::nx::string["Npc.img"][std::to_string(npcid)]["name"];
             formatted_text.replace(begin, end - begin, namestr);
         }
     }
@@ -310,7 +310,7 @@ std::string UINpcTalk::format_text(const std::string &tx,
             size_t b = begin + 2;
             int32_t itemid = std::stoi(formatted_text.substr(b, end - b));
             std::string itemname =
-                nl::nx::string["Consume.img"][itemid]["name"];
+                nxwz::nx::string["Consume.img"][itemid]["name"];
 
             formatted_text.replace(begin, end - begin, itemname);
         }
@@ -418,10 +418,10 @@ void UINpcTalk::change_text(int32_t npcid,
         strid.insert(0, 7 - strid.size(), '0');
         strid.append(".img");
 
-        speaker_ = nl::nx::npc[strid]["stand"]["0"];
+        speaker_ = nxwz::nx::npc[strid]["stand"]["0"];
 
         std::string namestr =
-            nl::nx::string["Npc.img"][std::to_string(npcid)]["name"];
+            nxwz::nx::string["Npc.img"][std::to_string(npcid)]["name"];
         name_.change_text(namestr);
     } else {
         speaker_ = Texture();

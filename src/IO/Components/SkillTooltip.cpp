@@ -15,13 +15,13 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "SkillTooltip.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Data/SkillData.h"
 
 namespace ms {
 SkillTooltip::SkillTooltip() {
-    nl::node Frame = nl::nx::ui["UIToolTip.img"]["Item"]["Frame2"];
+    nxwz::node Frame = nxwz::nx::ui["UIToolTip.img"]["Item"]["Frame2"];
 
     frame_ = Frame;
     cover_ = Frame["cover"];

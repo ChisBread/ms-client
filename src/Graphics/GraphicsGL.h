@@ -19,7 +19,7 @@
 #include <glad/glad.h>
 #include FT_FREETYPE_H
 
-#include <nlnx/bitmap.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Constants.h"
 #include "../Error.h"
@@ -42,10 +42,10 @@ public:
     void clear();
 
     // Add a bitmap to the available resources.
-    void add_bitmap(const nl::bitmap &bmp);
+    void add_bitmap(const nxwz::bitmap &bmp);
 
     // Draw the bitmap with the given parameters.
-    void draw(const nl::bitmap &bmp,
+    void draw(const nxwz::bitmap &bmp,
               const Rectangle<int16_t> &rect,
               const Color &color,
               float angle);
@@ -131,7 +131,7 @@ private:
     };
 
     // Add a bitmap to the available resources.
-    const Offset &get_offset(const nl::bitmap &bmp);
+    const Offset &get_offset(const nxwz::bitmap &bmp);
 
     struct Leftover {
         GLshort left;

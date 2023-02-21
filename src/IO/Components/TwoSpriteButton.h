@@ -21,16 +21,16 @@
 namespace ms {
 class TwoSpriteButton : public Button {
 public:
-    TwoSpriteButton(const nl::node &nsrc,
-                    const nl::node &ssrc,
+    TwoSpriteButton(const nxwz::node &nsrc,
+                    const nxwz::node &ssrc,
                     Point<int16_t> npos,
                     Point<int16_t> spos);
 
-    TwoSpriteButton(const nl::node &nsrc,
-                    const nl::node &ssrc,
+    TwoSpriteButton(const nxwz::node &nsrc,
+                    const nxwz::node &ssrc,
                     Point<int16_t> position);
 
-    TwoSpriteButton(const nl::node &nsrc, const nl::node &ssrc);
+    TwoSpriteButton(const nxwz::node &nsrc, const nxwz::node &ssrc);
 
     TwoSpriteButton();
 

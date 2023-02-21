@@ -15,18 +15,18 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "MapBackgrounds.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Graphics/GraphicsGL.h"
 
 namespace ms {
-Background::Background(const nl::node &src) {
+Background::Background(const nxwz::node &src) {
     VWIDTH = Constants::Constants::get().get_viewwidth();
     VHEIGHT = Constants::Constants::get().get_viewheight();
     WOFFSET = VWIDTH / 2;
     HOFFSET = VHEIGHT / 2;
 
-    nl::node backsrc = nl::nx::map["Back"];
+    nxwz::node backsrc = nxwz::nx::map["Back"];
 
     animated_ = src["ani"].get_bool();
     animation_ =
@@ -143,9 +143,9 @@ void Background::update() {
     animation_.update();
 }
 
-MapBackgrounds::MapBackgrounds(const nl::node &src) {
+MapBackgrounds::MapBackgrounds(const nxwz::node &src) {
     int16_t no = 0;
-    nl::node back = src[std::to_string(no)];
+    nxwz::node back = src[std::to_string(no)];
 
     while (back.size() > 0) {
         bool front = back["front"].get_bool();

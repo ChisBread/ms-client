@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIChat.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Components/MapleButton.h"
 #include "../UI.h"
@@ -24,11 +24,11 @@ namespace ms {
 UIChat::UIChat() : UIDragElement<PosMAPLECHAT>() {
     show_weekly_ = Configuration::get().get_show_weekly();
 
-    nl::node socialChatEnter = nl::nx::ui["UIWindow2.img"]["socialChatEnter"];
+    nxwz::node socialChatEnter = nxwz::nx::ui["UIWindow2.img"]["socialChatEnter"];
 
-    nl::node backgrnd = socialChatEnter["backgrnd"];
-    nl::node backgrnd4 = socialChatEnter["backgrnd4"];
-    nl::node backgrnd5 = socialChatEnter["backgrnd5"];
+    nxwz::node backgrnd = socialChatEnter["backgrnd"];
+    nxwz::node backgrnd4 = socialChatEnter["backgrnd4"];
+    nxwz::node backgrnd5 = socialChatEnter["backgrnd5"];
 
     rank_shift_ = Point<int16_t>(86, 130);
     name_shift_ = Point<int16_t>(50, 5);
@@ -110,11 +110,11 @@ void UIChat::close() {
 UIRank::UIRank() : UIDragElement<PosMAPLECHAT>() {
     Configuration::get().set_show_weekly(false);
 
-    nl::node socialRank = nl::nx::ui["UIWindow2.img"]["socialRank"];
+    nxwz::node socialRank = nxwz::nx::ui["UIWindow2.img"]["socialRank"];
 
-    nl::node backgrnd = socialRank["backgrnd"];
-    nl::node backgrnd4 = socialRank["backgrnd4"];
-    nl::node backgrnd5 = socialRank["backgrnd5"];
+    nxwz::node backgrnd = socialRank["backgrnd"];
+    nxwz::node backgrnd4 = socialRank["backgrnd4"];
+    nxwz::node backgrnd5 = socialRank["backgrnd5"];
 
     rank_shift_ = Point<int16_t>(86, 130);
     name_shift_ = Point<int16_t>(52, 4);

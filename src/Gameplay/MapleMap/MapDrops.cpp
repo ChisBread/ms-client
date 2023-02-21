@@ -15,8 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "MapDrops.h"
 
-#include <nlnx/node.hpp>
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Constants.h"
 #include "../Data/ItemData.h"
@@ -29,7 +28,7 @@ namespace ms {
 MapDrops::MapDrops() : loot_enabled_(false) {}
 
 void MapDrops::init() {
-    nl::node src = nl::nx::item["Special"]["0900.img"];
+    nxwz::node src = nxwz::nx::item["Special"]["0900.img"];
 
     meso_icons_[MesoIcon::BRONZE] = src["09000000"]["iconRaw"];
     meso_icons_[MesoIcon::GOLD] = src["09000001"]["iconRaw"];

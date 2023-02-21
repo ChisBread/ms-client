@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UILoginNotice.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <utility>
 
 #include "../Audio/Audio.h"
@@ -31,8 +31,8 @@ UILoginNotice::UILoginNotice(uint16_t message,
     multiple_(false),
     okhandler_(std::move(okhandler)),
     cancel_handler_(std::move(cancelhandler)) {
-    nl::node Notice = nl::nx::ui["Login.img"]["Notice"];
-    nl::node backgrnd;
+    nxwz::node Notice = nxwz::nx::ui["Login.img"]["Notice"];
+    nxwz::node backgrnd;
 
     switch (message) {
         case Message::NAME_IN_USE:
@@ -105,8 +105,8 @@ Button::State UILoginNotice::button_pressed(uint16_t buttonid) {
 }
 
 UIQuitConfirm::UIQuitConfirm() {
-    nl::node notice = nl::nx::ui["Login.img"]["Notice"];
-    nl::node backgrnd = notice["backgrnd"]["0"];
+    nxwz::node notice = nxwz::nx::ui["Login.img"]["Notice"];
+    nxwz::node backgrnd = notice["backgrnd"]["0"];
 
     sprites_.emplace_back(backgrnd);
     sprites_.emplace_back(notice["text"][UILoginNotice::Message::CONFIRM_EXIT],
@@ -150,10 +150,10 @@ UIClassConfirm::UIClassConfirm(uint8_t selected_class,
                                bool unavailable,
                                std::function<void()> okhandler) :
     okhandler_(std::move(okhandler)) {
-    nl::node RaceSelect = nl::nx::ui["Login.img"]["RaceSelect_new"];
-    nl::node type = unavailable ? RaceSelect["deny"] : RaceSelect["confirm"];
-    nl::node backgrnd = type["backgrnd"];
-    nl::node race = type["race"][selected_class];
+    nxwz::node RaceSelect = nxwz::nx::ui["Login.img"]["RaceSelect_new"];
+    nxwz::node type = unavailable ? RaceSelect["deny"] : RaceSelect["confirm"];
+    nxwz::node backgrnd = type["backgrnd"];
+    nxwz::node race = type["race"][selected_class];
 
     Point<int16_t> race_pos = Point<int16_t>(0, 0);
 
@@ -257,8 +257,8 @@ Button::State UIClassConfirm::button_pressed(uint16_t buttonid) {
 UIKeySelect::UIKeySelect(std::function<void(bool)> oh, bool l) :
     okhandler_(std::move(oh)),
     login_(l) {
-    nl::node KeyType = nl::nx::ui["UIWindow2.img"]["KeyConfig"]["KeyType"];
-    nl::node backgrnd = KeyType["backgrnd"];
+    nxwz::node KeyType = nxwz::nx::ui["UIWindow2.img"]["KeyConfig"]["KeyType"];
+    nxwz::node backgrnd = KeyType["backgrnd"];
 
     sprites_.emplace_back(backgrnd);
 
@@ -319,9 +319,9 @@ Button::State UIKeySelect::button_pressed(uint16_t buttonid) {
 UIKeyConfirm::UIKeyConfirm(bool alternate, std::function<void()> oh, bool l) :
     okhandler_(std::move(oh)),
     login_(l) {
-    nl::node alert =
-        nl::nx::ui["UIWindow2.img"]["KeyConfig"]["KeyType"]["alert"];
-    nl::node background = alternate ? alert["alternate"] : alert["default"];
+    nxwz::node alert =
+        nxwz::nx::ui["UIWindow2.img"]["KeyConfig"]["KeyType"]["alert"];
+    nxwz::node background = alternate ? alert["alternate"] : alert["default"];
 
     sprites_.emplace_back(background);
 

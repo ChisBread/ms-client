@@ -242,11 +242,12 @@ target_include_directories(msclient
 
   SYSTEM PRIVATE
     ${PROJECT_SOURCE_DIR}/thirdparty/
+    ${PROJECT_SOURCE_DIR}/thirdparty/wzlibcpp/include
     ${PROJECT_SOURCE_DIR}/thirdparty/asio/asio/include
     ${PROJECT_SOURCE_DIR}/thirdparty/stb
 
     $<$<PLATFORM_ID:Darwin>:${PROJECT_SOURCE_DIR}/thirdparty/bass24-osx>
-    $<$<PLATFORM_ID:Darwin>:/usr/local/Cellar/glfw/3.3.2/include>
+    $<$<PLATFORM_ID:Darwin>:/usr/local/Cellar/glfw/3.3.8/include>
 
     $<$<PLATFORM_ID:Linux>:${PROJECT_SOURCE_DIR}/thirdparty/bass24-linux>
 
@@ -263,9 +264,10 @@ target_link_libraries(msclient
 )
 
 target_link_libraries(msclient 
+      $<$<PLATFORM_ID:Darwin,Darwin,Windows>:${PROJECT_SOURCE_DIR}/thirdparty/wzlibcpp-build/libwzlibcpp.a>
       $<$<PLATFORM_ID:Darwin>:${PROJECT_SOURCE_DIR}/thirdparty/bass24-osx/libbass.dylib>
-      $<$<PLATFORM_ID:Darwin>:/usr/local/Cellar/lz4/1.9.3/lib/liblz4.a>
-      $<$<PLATFORM_ID:Darwin>:/usr/local/Cellar/glfw/3.3.2/lib/libglfw.dylib>
+      $<$<PLATFORM_ID:Darwin>:/usr/local/Cellar/lz4/1.9.4/lib/liblz4.a>
+      $<$<PLATFORM_ID:Darwin>:/usr/local/Cellar/glfw/3.3.8/lib/libglfw.dylib>
 
       $<$<PLATFORM_ID:Linux>:${PROJECT_SOURCE_DIR}/thirdparty/bass24-linux/x64/libbass.so>
       $<$<PLATFORM_ID:Linux>:/usr/lib/x86_64-linux-gnu/libglfw.so>

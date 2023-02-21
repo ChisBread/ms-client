@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
-#include <nlnx/bitmap.hpp>
+#include "../Util/NxWz.h"
 
 #include "DrawArgument.h"
 
@@ -23,7 +23,7 @@ namespace ms {
 // Represents a single image loaded from a of game data
 class Texture {
 public:
-    Texture(nl::node source);
+    Texture(nxwz::node source);
 
     Texture();
 
@@ -44,9 +44,9 @@ public:
     Point<int16_t> get_dimensions() const;
 
 private:
-    static nl::node find_child(const nl::node &source, const std::string &link);
+    static nxwz::node find_child(const nxwz::node &source, const std::string &link);
 
-    nl::bitmap bitmap_;
+    nxwz::bitmap bitmap_;
     Point<int16_t> origin_;
     Point<int16_t> dimensions_;
 };

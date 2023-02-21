@@ -16,8 +16,7 @@
 #include "NxFiles.h"
 
 #include <fstream>
-#include <nlnx/node.hpp>
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 namespace ms::NxFiles {
 Error init() {
@@ -28,7 +27,7 @@ Error init() {
     }
 
     try {
-        nl::nx::load_all();
+        nxwz::nx::load_all();
     } catch (const std::exception &ex) {
         static const std::string message = ex.what();
 
@@ -38,8 +37,8 @@ Error init() {
     constexpr const char *POSTCHAOS_BITMAP =
         "Login.img/WorldSelect/BtChannel/layer:bg";
 
-    if (nl::nx::ui.resolve(POSTCHAOS_BITMAP).data_type()
-        != nl::node::type::bitmap) {
+    if (nxwz::nx::ui.resolve(POSTCHAOS_BITMAP).data_type()
+        != nxwz::node::type::bitmap) {
         return Error::Code::WRONG_UI_FILE;
     }
 

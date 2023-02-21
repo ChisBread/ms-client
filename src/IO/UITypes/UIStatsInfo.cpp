@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIStatsInfo.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Gameplay/Stage.h"
 #include "../../Net/Packets/PlayerPackets.h"
@@ -33,12 +33,12 @@ auto fn_spend_ap = []<typename... T>(T && ...args) {
 UIStatsInfo::UIStatsInfo(const CharStats &st) :
     UIDragElement<PosSTATS>(Point<int16_t>(212, 20)),
     stats_(st) {
-    nl::node close = nl::nx::ui["Basic.img"]["BtClose3"];
-    nl::node Stat = nl::nx::ui["UIWindow4.img"]["Stat"];
-    nl::node main = Stat["main"];
-    nl::node detail = Stat["detail"];
-    nl::node abilityTitle = detail["abilityTitle"];
-    nl::node metierLine = detail["metierLine"];
+    nxwz::node close = nxwz::nx::ui["Basic.img"]["BtClose3"];
+    nxwz::node Stat = nxwz::nx::ui["UIWindow4.img"]["Stat"];
+    nxwz::node main = Stat["main"];
+    nxwz::node detail = Stat["detail"];
+    nxwz::node abilityTitle = detail["abilityTitle"];
+    nxwz::node metierLine = detail["metierLine"];
 
     sprites_.emplace_back(main["backgrnd"]);
     sprites_.emplace_back(main["backgrnd2"]);

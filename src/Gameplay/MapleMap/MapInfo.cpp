@@ -18,12 +18,12 @@
 #include "../Constants.h"
 
 namespace ms {
-MapInfo::MapInfo(const nl::node &src,
+MapInfo::MapInfo(const nxwz::node &src,
                  Range<int16_t> walls,
                  Range<int16_t> borders) {
-    nl::node info = src["info"];
+    nxwz::node info = src["info"];
 
-    if (info["VRLeft"].data_type() == nl::node::type::integer) {
+    if (info["VRLeft"].data_type() == nxwz::node::type::integer) {
         map_walls_ = Range<int16_t>(info["VRLeft"], info["VRRight"]);
         map_borders_ = Range<int16_t>(info["VRTop"], info["VRBottom"]);
     } else {
@@ -92,7 +92,7 @@ std::optional<std::reference_wrapper<const Ladder>> MapInfo::findladder(
     return {};
 }
 
-Seat::Seat(const nl::node &src) {
+Seat::Seat(const nxwz::node &src) {
     pos_ = src;
 }
 
@@ -107,7 +107,7 @@ Point<int16_t> Seat::getpos() const {
     return pos_;
 }
 
-Ladder::Ladder(const nl::node &src) {
+Ladder::Ladder(const nxwz::node &src) {
     x_ = src["x"];
     y1_ = src["y1"];
     y2_ = src["y2"];

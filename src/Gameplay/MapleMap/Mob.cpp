@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "Mob.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Net/Packets/GameplayPackets.h"
 #include "StringHandling.h"
@@ -37,9 +37,9 @@ Mob::Mob(int32_t oi,
          Point<int16_t> position) :
     MapObject(oi) {
     std::string strid = string_format::extend_id(mid, 7);
-    nl::node src = nl::nx::mob[strid + ".img"];
+    nxwz::node src = nxwz::nx::mob[strid + ".img"];
 
-    nl::node info = src["info"];
+    nxwz::node info = src["info"];
 
     level_ = info["level"];
     watk_ = info["PADamage"];
@@ -72,9 +72,9 @@ Mob::Mob(int32_t oi,
     animations_[Stance::HIT] = src["hit1"];
     animations_[Stance::DIE] = src["die1"];
 
-    name_ = std::string(nl::nx::string["Mob.img"][std::to_string(mid)]["name"]);
+    name_ = std::string(nxwz::nx::string["Mob.img"][std::to_string(mid)]["name"]);
 
-    nl::node sndsrc = nl::nx::sound["Mob.img"][strid];
+    nxwz::node sndsrc = nxwz::nx::sound["Mob.img"][strid];
 
     hit_sound_ = sndsrc["Damage"];
     die_sound_ = sndsrc["Die"];

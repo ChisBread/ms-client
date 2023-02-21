@@ -16,10 +16,10 @@
 #include "MapleFrame.h"
 
 #include <algorithm>
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 namespace ms {
-MapleFrame::MapleFrame(const nl::node &src) {
+MapleFrame::MapleFrame(const nxwz::node &src) {
     center_ = src["c"];
     east_ = src["e"];
     north_east_ = src["ne"];

@@ -75,7 +75,7 @@ private:
         Texture texture;
         uint16_t delay;
 
-        Frame(const nl::node &src) {
+        Frame(const nxwz::node &src) {
             texture = src["face"];
 
             Point<int16_t> shift = src["face"]["map"]["brow"];

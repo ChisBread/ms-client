@@ -21,3 +21,5 @@
 
 // Use cryptography for communication with the server
 #define USE_CRYPTO
+
+#define USE_NX

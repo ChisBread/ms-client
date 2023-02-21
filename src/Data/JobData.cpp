@@ -15,22 +15,20 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "JobData.h"
 
-#include <nlnx/node.hpp>
-#include <nlnx/nx.hpp>
-
+#include "../Util/NxWz.h"
 #include "StringHandling.h"
 
 namespace ms {
 JobData::JobData(int32_t id) {
     std::string strid = string_format::extend_id(id, 3);
-    nl::node src = nl::nx::skill[strid + ".img"];
-    nl::node strsrc = nl::nx::string["Skill.img"][strid];
+    nxwz::node src = nxwz::nx::skill[strid + ".img"];
+    nxwz::node strsrc = nxwz::nx::string["Skill.img"][strid];
 
     icon_ = src["info"]["icon"];
 
     name_ = std::string(strsrc["bookName"]);
 
-    for (const nl::node &sub : src["skill"]) {
+    for (const nxwz::node &sub : src["skill"]) {
         int32_t skill_id = string_conversion::or_zero<int32_t>(sub.name());
 
         if (skill_id == 0) {

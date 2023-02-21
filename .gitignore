@@ -43,6 +43,7 @@ CMakeFiles/*
 [Tt]esting/*
 
 # Build results
+/msclient-install
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

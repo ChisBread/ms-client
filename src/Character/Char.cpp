@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "Char.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Data/WeaponData.h"
 
@@ -359,7 +359,7 @@ PhysicsObject &Char::get_phobj() {
 void Char::init() {
     CharLook::init();
 
-    nl::node src = nl::nx::effect["BasicEff.img"];
+    nxwz::node src = nxwz::nx::effect["BasicEff.img"];
 
     for (auto iter : CharEffect::PATHS) {
         char_effects_.emplace(iter.first, src.resolve(iter.second));

@@ -27,7 +27,7 @@
 #include <windows.h>
 #endif
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 namespace ms {
 namespace {
@@ -49,15 +49,15 @@ UILogin::UILogin() : UIElement(Point<int16_t>(0, 0), Point<int16_t>(800, 600)) {
                     Color::Name::LEMONGRASS,
                     "Ver. " + version_text);
 
-    nl::node map = nl::nx::map001["Back"]["login.img"];
-    nl::node back = map["back"];
-    nl::node ani = map["ani"];
+    nxwz::node map = nxwz::nx::map001["Back"]["login.img"];
+    nxwz::node back = map["back"];
+    nxwz::node ani = map["ani"];
 
-    nl::node obj = nl::nx::map["Obj"]["login.img"];
-    nl::node title = nl::nx::ui["Login.img"]["Title"];
-    nl::node common = nl::nx::ui["Login.img"]["Common"];
+    nxwz::node obj = nxwz::nx::map["Obj"]["login.img"];
+    nxwz::node title = nxwz::nx::ui["Login.img"]["Title"];
+    nxwz::node common = nxwz::nx::ui["Login.img"]["Common"];
 
-    nl::node prettyLogo = nl::nx::mapPretty["Back"]["login.img"]["ani"]["16"];
+    nxwz::node prettyLogo = nxwz::nx::mapPretty["Back"]["login.img"]["ani"]["16"];
 
     sprites_.emplace_back(back["11"], Point<int16_t>(400, 300));
     sprites_.emplace_back(ani["17"], Point<int16_t>(129, 283));

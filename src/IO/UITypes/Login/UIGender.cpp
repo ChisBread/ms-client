@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIGender.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <utility>
 
 #include "../../Net/Packets/LoginPackets.h"
@@ -36,9 +36,9 @@ UIGender::UIGender(std::function<void()> oh) :
     okhandler_(std::move(oh)) {
     cur_timestep_ = 0;
 
-    nl::node Login = nl::nx::ui["Login.img"];
-    nl::node Gender = Login["Gender"];
-    nl::node scroll = Gender["scroll"][0];
+    nxwz::node Login = nxwz::nx::ui["Login.img"];
+    nxwz::node Gender = Login["Gender"];
+    nxwz::node scroll = Gender["scroll"][0];
 
     for (size_t i = 0; i < gender_sprites_.size(); i++) {
         gender_sprites_[i] = scroll[i];

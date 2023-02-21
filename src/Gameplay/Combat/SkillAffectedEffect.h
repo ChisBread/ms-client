@@ -17,7 +17,7 @@
 
 #include "../../Template/BoolPair.h"
 #include "Character/Char.h"
-#include "nlnx/nx.hpp"
+#include "../Util/NxWz.h"
 
 namespace ms {
 // Interface for affected effects
@@ -30,7 +30,7 @@ public:
 protected:
     class Effect {
     public:
-        Effect(const nl::node &src) {
+        Effect(const nxwz::node &src) {
             animation_ = src;
             pos_ = src["pos"];
             z_ = src["z"];
@@ -56,7 +56,7 @@ public:
 // An effect which displays an animation over the character's position
 class SingleAffectedEffect : public SkillAffectedEffect {
 public:
-    SingleAffectedEffect(const nl::node &src);
+    SingleAffectedEffect(const nxwz::node &src);
 
     void apply(Char &target) const override;
 

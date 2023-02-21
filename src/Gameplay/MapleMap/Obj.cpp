@@ -15,11 +15,11 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "Obj.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 namespace ms {
-Obj::Obj(const nl::node &src) {
-    animation_ = Animation(nl::nx::map["Obj"][src["oS"] + ".img"][src["l0"]]
+Obj::Obj(const nxwz::node &src) {
+    animation_ = Animation(nxwz::nx::map["Obj"][src["oS"] + ".img"][src["l0"]]
                                       [src["l1"]][src["l2"]]);
     pos_ = Point<int16_t>(src["x"], src["y"]);
     flip_ = src["f"].get_bool();

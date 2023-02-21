@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIChannel.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Gameplay/Stage.h"
 #include "../Audio/Audio.h"
@@ -31,9 +31,9 @@ UIChannel::UIChannel(uint8_t wid, uint8_t ch, uint8_t ch_count) :
     channel_count_(ch_count) {
     uint8_t selected_world = wid;
 
-    nl::node Channel = nl::nx::ui["UIWindow2.img"]["Channel"];
+    nxwz::node Channel = nxwz::nx::ui["UIWindow2.img"]["Channel"];
 
-    nl::node backgrnd = Channel["backgrnd"];
+    nxwz::node backgrnd = Channel["backgrnd"];
     Texture bg = backgrnd;
 
     sprites_.emplace_back(backgrnd, Point<int16_t>(1, 0));

@@ -18,14 +18,14 @@
 #include "StringHandling.h"
 
 namespace ms {
-SingleUseEffect::SingleUseEffect(const nl::node &src) :
+SingleUseEffect::SingleUseEffect(const nxwz::node &src) :
     effect_(src["effect"]) {}
 
 void SingleUseEffect::apply(Char &target) const {
     effect_.apply(target);
 }
 
-TwoHandedUseEffect::TwoHandedUseEffect(const nl::node &src) :
+TwoHandedUseEffect::TwoHandedUseEffect(const nxwz::node &src) :
     effects_(src["effect"]["0"], src["effect"]["1"]) {}
 
 void TwoHandedUseEffect::apply(Char &target) const {
@@ -33,9 +33,9 @@ void TwoHandedUseEffect::apply(Char &target) const {
     effects_[twohanded].apply(target);
 }
 
-MultiUseEffect::MultiUseEffect(const nl::node &src) {
+MultiUseEffect::MultiUseEffect(const nxwz::node &src) {
     int8_t no = -1;
-    nl::node sub = src["effect"];
+    nxwz::node sub = src["effect"];
 
     while (sub) {
         effects_.push_back(sub);
@@ -51,7 +51,7 @@ void MultiUseEffect::apply(Char &target) const {
     }
 }
 
-ByLevelUseEffect::ByLevelUseEffect(const nl::node &src) {
+ByLevelUseEffect::ByLevelUseEffect(const nxwz::node &src) {
     for (const auto &sub : src["CharLevel"]) {
         auto level = string_conversion::or_zero<uint16_t>(sub.name());
         effects_.emplace(level, sub["effect"]);

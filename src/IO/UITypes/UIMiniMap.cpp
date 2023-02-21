@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIMiniMap.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Components/MapleButton.h"
 #include "../Gameplay/MapleMap/Npc.h"
@@ -39,8 +39,8 @@ UIMiniMap::UIMiniMap(const CharStats &stats) :
     simple_mode_ = Setting<MiniMapSimpleMode>::get().load();
 
     std::string node = simple_mode_ ? "MiniMapSimpleMode" : "MiniMap";
-    mini_map_ = nl::nx::ui["UIWindow2.img"][node];
-    list_npc_ = nl::nx::ui["UIWindow2.img"]["MiniMap"]["ListNpc"];
+    mini_map_ = nxwz::nx::ui["UIWindow2.img"][node];
+    list_npc_ = nxwz::nx::ui["UIWindow2.img"]["MiniMap"]["ListNpc"];
 
     buttons_[Buttons::BT_MIN] =
         std::make_unique<MapleButton>(mini_map_["BtMin"],
@@ -70,8 +70,8 @@ UIMiniMap::UIMiniMap(const CharStats &stats) :
 
     marker_ =
         Setting<MiniMapDefaultHelpers>::get().load()
-            ? nl::nx::ui["UIWindow2.img"]["MiniMapSimpleMode"]["DefaultHelper"]
-            : nl::nx::mapLatest["MapHelper.img"]["minimap"];
+            ? nxwz::nx::ui["UIWindow2.img"]["MiniMapSimpleMode"]["DefaultHelper"]
+            : nxwz::nx::mapLatest["MapHelper.img"]["minimap"];
 
     player_marker_ = Animation(marker_["user"]);
     selected_marker_ = Animation(mini_map_["iconNpc"]);
@@ -138,8 +138,8 @@ void UIMiniMap::update() {
         mapid_ = mid;
         map_ = NxHelper::Map::get_map_node_name(mapid_);
 
-        nl::node town = map_["info"]["town"];
-        nl::node miniMap = map_["miniMap"];
+        nxwz::node town = map_["info"]["town"];
+        nxwz::node miniMap = map_["miniMap"];
 
         if (!miniMap) {
             has_map_ = false;
@@ -286,11 +286,11 @@ Cursor::State UIMiniMap::send_cursor(bool clicked, Point<int16_t> cursorpos) {
             }
 
             if (marker_spot.contains(cursor_relative)) {
-                nl::node portal_tm = map_["portal"][sprite_name]["tm"];
+                nxwz::node portal_tm = map_["portal"][sprite_name]["tm"];
                 std::string portal_cat =
                     NxHelper::Map::get_map_category(portal_tm);
-                nl::node portal_name =
-                    nl::nx::string["Map.img"][portal_cat][portal_tm]["mapName"];
+                nxwz::node portal_name =
+                    nxwz::nx::string["Map.img"][portal_cat][portal_tm]["mapName"];
 
                 if (portal_name) {
                     found = true;
@@ -480,7 +480,7 @@ void UIMiniMap::update_canvas() {
     normal_sprites_.clear();
     max_sprites_.clear();
 
-    nl::node Min, Normal, Max;
+    nxwz::node Min, Normal, Max;
 
     if (simple_mode_) {
         Min = mini_map_["Window"]["Min"];
@@ -536,7 +536,7 @@ void UIMiniMap::update_canvas() {
     // SimpleMode's backdrop is opaque, the other is transparent but lightly
     // colored UI.wz v208 has normal center sprite in-linked to bottom right
     // window frame, not sure why.
-    nl::node MiddleCenter = simple_mode_
+    nxwz::node MiddleCenter = simple_mode_
                                 ? mini_map_["Window"]["Max"]["MiddleCenter"]
                                 : mini_map_["MaxMap"]["c"];
 
@@ -641,7 +641,7 @@ void UIMiniMap::update_canvas() {
         Max[DownRight],
         Point<int16_t>(ur_x_offset, down_y_offset + MAX_ADJ_));
     max_sprites_.emplace_back(
-        nl::nx::mapLatest["MapHelper.img"]["mark"][map_["info"]["mapMark"]],
+        nxwz::nx::mapLatest["MapHelper.img"]["mark"][map_["info"]["mapMark"]],
         DrawArgument(Point<int16_t>(7, 17)));
 
     max_dimensions_ = normal_dimensions_ + Point<int16_t>(0, MAX_ADJ_);
@@ -706,13 +706,13 @@ void UIMiniMap::update_static_markers() {
     Animation marker_sprite;
 
     /// Portals
-    nl::node portals = map_["portal"];
+    nxwz::node portals = map_["portal"];
     marker_sprite = Animation(marker_["portal"]);
     Point<int16_t> marker_offset =
         marker_sprite.get_dimensions() / Point<int16_t>(2, 0);
     constexpr Point<int16_t> marker_pos_offset = { 0, 65 };
 
-    for (nl::node portal = portals.begin(); portal != portals.end(); ++portal) {
+    for (nxwz::node portal = portals.begin(); portal != portals.end(); ++portal) {
         int portal_type = portal["pt"];
 
         if (portal_type == 2) {

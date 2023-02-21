@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIEvent.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Components/MapleButton.h"
 #include "../Data/ItemData.h"
@@ -26,10 +26,10 @@ UIEvent::UIEvent() : UIDragElement<PosEVENT>() {
     offset_ = 0;
     event_count_ = 16;
 
-    nl::node main = nl::nx::ui["UIWindow2.img"]["EventList"]["main"];
-    nl::node close = nl::nx::ui["Basic.img"]["BtClose3"];
+    nxwz::node main = nxwz::nx::ui["UIWindow2.img"]["EventList"]["main"];
+    nxwz::node close = nxwz::nx::ui["Basic.img"]["BtClose3"];
 
-    nl::node backgrnd = main["backgrnd"];
+    nxwz::node backgrnd = main["backgrnd"];
     Point<int16_t> bg_dimensions = Texture(backgrnd).get_dimensions();
 
     sprites_.emplace_back(backgrnd);

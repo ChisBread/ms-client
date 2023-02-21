@@ -16,7 +16,7 @@
 #pragma once
 
 #include <cstdint>
-#include <nlnx/node.hpp>
+#include "../Util/NxWz.h"
 #include <string>
 
 #include "../Graphics/Texture.h"
@@ -26,7 +26,7 @@ namespace ms {
 // Represents a tile on a map.
 class Tile {
 public:
-    Tile(const nl::node &src, const std::string &tileset);
+    Tile(const nxwz::node &src, const std::string &tileset);
 
     // Draw the tile.
     void draw(Point<int16_t> viewpos) const;

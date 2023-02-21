@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "Clothing.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <unordered_set>
 
 #include "../../Data/WeaponData.h"
@@ -60,8 +60,8 @@ Clothing::Clothing(int32_t id, const BodyDrawInfo &drawinfo) : item_id_(id) {
 
     std::string strid = "0" + std::to_string(item_id_);
     std::string category = equipdata.get_itemdata().get_category();
-    nl::node src = nl::nx::character[category][strid + ".img"];
-    nl::node info = src["info"];
+    nxwz::node src = nxwz::nx::character[category][strid + ".img"];
+    nxwz::node info = src["info"];
 
     vslot_ = std::string(info["vslot"]);
 
@@ -85,18 +85,18 @@ Clothing::Clothing(int32_t id, const BodyDrawInfo &drawinfo) : item_id_(id) {
         Stance::Id stance = iter.first;
         const std::string &stancename = iter.second;
 
-        nl::node stancenode = src[stancename];
+        nxwz::node stancenode = src[stancename];
 
         if (!stancenode) {
             continue;
         }
 
-        for (int frame = 0; nl::node framenode = stancenode[frame]; ++frame) {
-            for (const nl::node &partnode : framenode) {
+        for (int frame = 0; nxwz::node framenode = stancenode[frame]; ++frame) {
+            for (const nxwz::node &partnode : framenode) {
                 std::string part = partnode.name();
 
                 if (!partnode
-                    || partnode.data_type() != nl::node::type::bitmap) {
+                    || partnode.data_type() != nxwz::node::type::bitmap) {
                     continue;
                 }
 
@@ -117,13 +117,13 @@ Clothing::Clothing(int32_t id, const BodyDrawInfo &drawinfo) : item_id_(id) {
                 Point<int16_t> parentpos;
 
                 for (const auto &mapnode : partnode["map"]) {
-                    if (mapnode.data_type() == nl::node::type::vector) {
+                    if (mapnode.data_type() == nxwz::node::type::vector) {
                         parent = mapnode.name();
                         parentpos = mapnode;
                     }
                 }
 
-                nl::node mapnode = partnode["map"];
+                nxwz::node mapnode = partnode["map"];
                 Point<int16_t> shift;
 
                 switch (eq_slot_) {

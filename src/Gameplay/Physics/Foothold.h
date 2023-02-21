@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
-#include <nlnx/node.hpp>
+#include "../Util/NxWz.h"
 
 #include "../../Template/Range.h"
 
@@ -23,7 +23,7 @@ namespace ms {
 // Represents a platform part on a maple map
 class Foothold {
 public:
-    Foothold(const nl::node &src, uint16_t id, uint8_t layer);
+    Foothold(const nxwz::node &src, uint16_t id, uint8_t layer);
 
     Foothold();
 

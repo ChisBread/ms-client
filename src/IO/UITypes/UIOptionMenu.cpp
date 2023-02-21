@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIOptionMenu.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Components/MapleButton.h"
 #include "../Components/TwoSpriteButton.h"
@@ -25,13 +25,13 @@ namespace ms {
 UIOptionMenu::UIOptionMenu() :
     UIDragElement<PosOPTIONMENU>(),
     selected_tab_(0) {
-    nl::node OptionMenu = nl::nx::ui["StatusBar3.img"]["OptionMenu"];
-    nl::node backgrnd = OptionMenu["backgrnd"];
+    nxwz::node OptionMenu = nxwz::nx::ui["StatusBar3.img"]["OptionMenu"];
+    nxwz::node backgrnd = OptionMenu["backgrnd"];
 
     sprites_.emplace_back(backgrnd);
     sprites_.emplace_back(OptionMenu["backgrnd2"]);
 
-    nl::node graphic = OptionMenu["graphic"];
+    nxwz::node graphic = OptionMenu["graphic"];
 
     tab_background_[Buttons::TAB0] = graphic["layer:backgrnd"];
     tab_background_[Buttons::TAB1] = OptionMenu["sound"]["layer:backgrnd"];
@@ -46,9 +46,9 @@ UIOptionMenu::UIOptionMenu() :
     buttons_[Buttons::UIRESET] =
         std::make_unique<MapleButton>(OptionMenu["button:UIReset"]);
 
-    nl::node tab = OptionMenu["tab"];
-    nl::node tab_disabled = tab["disabled"];
-    nl::node tab_enabled = tab["enabled"];
+    nxwz::node tab = OptionMenu["tab"];
+    nxwz::node tab_disabled = tab["disabled"];
+    nxwz::node tab_enabled = tab["enabled"];
 
     for (size_t i = Buttons::TAB0; i < Buttons::CANCEL; i++) {
         buttons_[i] =

@@ -16,7 +16,7 @@
 #include "UIRaceSelect.h"
 
 #include <cctype>
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Audio/Audio.h"
 #include "../Components/AreaButton.h"
@@ -38,9 +38,9 @@ UIRaceSelect::UIRaceSelect() :
                     Color::Name::LEMONGRASS,
                     "Ver. " + version_text);
 
-    nl::node Login = nl::nx::ui["Login.img"];
-    nl::node Common = Login["Common"];
-    nl::node RaceSelect = Login["RaceSelect_new"];
+    nxwz::node Login = nxwz::nx::ui["Login.img"];
+    nxwz::node Common = Login["Common"];
+    nxwz::node RaceSelect = Login["RaceSelect_new"];
 
     Point<int16_t> make_pos = RaceSelect["make"]["pos"];
     Point<int16_t> make_posZero = RaceSelect["make"]["posZero"];
@@ -335,7 +335,7 @@ UIElement::Type UIRaceSelect::get_type() const {
 }
 
 bool UIRaceSelect::check_name(const std::string &name) const {
-    nl::node ForbiddenName = nl::nx::etc["ForbiddenName.img"];
+    nxwz::node ForbiddenName = nxwz::nx::etc["ForbiddenName.img"];
 
     for (const auto &forbiddenName : ForbiddenName) {
         std::string lName = to_lower(name);

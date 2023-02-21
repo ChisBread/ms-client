@@ -395,11 +395,11 @@ void GraphicsGL::clear() {
     }
 }
 
-void GraphicsGL::add_bitmap(const nl::bitmap &bmp) {
+void GraphicsGL::add_bitmap(const nxwz::bitmap &bmp) {
     get_offset(bmp);
 }
 
-const GraphicsGL::Offset &GraphicsGL::get_offset(const nl::bitmap &bmp) {
+const GraphicsGL::Offset &GraphicsGL::get_offset(const nxwz::bitmap &bmp) {
     size_t id = bmp.id();
     auto offiter = offsets_.find(id);
 
@@ -535,7 +535,7 @@ const GraphicsGL::Offset &GraphicsGL::get_offset(const nl::bitmap &bmp) {
         .first->second;
 }
 
-void GraphicsGL::draw(const nl::bitmap &bmp,
+void GraphicsGL::draw(const nxwz::bitmap &bmp,
                       const Rectangle<int16_t> &rect,
                       const Color &color,
                       float angle) {

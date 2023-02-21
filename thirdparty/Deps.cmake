@@ -13,11 +13,28 @@ FetchContent_Declare(
 
 FetchContent_Declare(
   nlnx
-  GIT_REPOSITORY    https://github.com/filoper/NoLifeNx.git
-  GIT_TAG           0f485975a5d0b430270855fa59970f6b097ea793
+  GIT_REPOSITORY    https://github.com/ChisBread/NoLifeNx.git
+  GIT_TAG           1221c83d5d97f36732f41c36cacb2584f5c53115
   PREFIX            "${PROJECT_SOURCE_DIR}/thirdparty"
   SOURCE_DIR        "${PROJECT_SOURCE_DIR}/thirdparty/nlnx"
   BINARY_DIR        "${PROJECT_SOURCE_DIR}/thirdparty/nlnx-build"
+)
+FetchContent_Declare(
+  wzlibcpp
+  GIT_REPOSITORY    https://github.com/ChisBread/wzlibcpp.git
+  GIT_TAG           58029f06276d54959aa0faeab216965729d10a2b
+  PREFIX            "${PROJECT_SOURCE_DIR}/thirdparty"
+  SOURCE_DIR        "${PROJECT_SOURCE_DIR}/thirdparty/wzlibcpp"
+  BINARY_DIR        "${PROJECT_SOURCE_DIR}/thirdparty/wzlibcpp-build"
+)
+
+FetchContent_Declare(
+  glad
+  GIT_REPOSITORY    https://github.com/Dav1dde/glad.git
+  GIT_TAG           b5d260b65b3edbbd9e75f5a6c9924fe0ff4f04dd
+  PREFIX            "${PROJECT_SOURCE_DIR}/thirdparty"
+  SOURCE_DIR        "${PROJECT_SOURCE_DIR}/thirdparty/glad"
+  BINARY_DIR        "${PROJECT_SOURCE_DIR}/thirdparty/glad-build"
 )
 
 FetchContent_Declare(
@@ -48,7 +65,7 @@ IF (WIN32)
 
     FetchContent_Declare(
       lz4
-      URL               https://github.com/lz4/lz4/archive/v1.9.3.zip
+      URL               https://github.com/lz4/lz4/archive/v1.9.4.zip
       URL_MD5           72defe037b2c3db7a69affe7fe4bffd6
       PREFIX            "${PROJECT_SOURCE_DIR}/thirdparty"
       SOURCE_DIR        "${PROJECT_SOURCE_DIR}/thirdparty/lz4"
@@ -67,6 +84,6 @@ IF (WIN32)
     FetchContent_MakeAvailable(lz4 nlnx glad freetype glfw stb asio)
 
 ELSE()
-    FetchContent_MakeAvailable(glad nlnx asio stb)
+    FetchContent_MakeAvailable(glad nlnx wzlibcpp asio stb)
 ENDIF()
 

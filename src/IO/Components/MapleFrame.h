@@ -15,14 +15,14 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
-#include <nlnx/node.hpp>
+#include "../Util/NxWz.h"
 
 #include "../Graphics/Texture.h"
 
 namespace ms {
 class MapleFrame {
 public:
-    MapleFrame(const nl::node &src);
+    MapleFrame(const nxwz::node &src);
 
     MapleFrame();
 

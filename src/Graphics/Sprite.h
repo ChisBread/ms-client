@@ -23,9 +23,9 @@ class Sprite {
 public:
     Sprite(Animation animation, const DrawArgument &stateargs);
 
-    Sprite(const nl::node &src, const DrawArgument &stateargs);
+    Sprite(const nxwz::node &src, const DrawArgument &stateargs);
 
-    Sprite(const nl::node &src);
+    Sprite(const nxwz::node &src);
 
     Sprite();
 

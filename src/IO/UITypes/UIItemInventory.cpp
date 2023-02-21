@@ -15,7 +15,7 @@
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "UIItemInventory.h"
 
-#include <nlnx/nx.hpp>
+#include "../Util/NxWz.h"
 #include <string>
 
 #include "../../Data/EquipData.h"
@@ -57,7 +57,7 @@ UIItemInventory::UIItemInventory(const Inventory &invent) :
     tab_(InventoryType::Id::EQUIP),
     ignore_tooltip_(false),
     sort_enabled_(false) {
-    nl::node Item = nl::nx::ui["UIWindow2.img"]["Item"];
+    nxwz::node Item = nxwz::nx::ui["UIWindow2.img"]["Item"];
 
     // TODO: Change these to production
     backgrnd_ = Item["backgrnd"];
@@ -71,18 +71,18 @@ UIItemInventory::UIItemInventory(const Inventory &invent) :
     bg_dimensions_ = backgrnd_.get_dimensions();
     bg_full_dimensions_ = full_backgrnd_.get_dimensions();
 
-    nl::node New = Item["New"];
+    nxwz::node New = Item["New"];
     new_item_slot_ = New["inventory"];
     new_item_tab_ = New["Tab0"];
 
     projectile_ = Item["activeIcon"];
     disabled_ = Item["disabled"];
 
-    nl::node Tab = Item["Tab"];
-    nl::node taben = Tab["enabled"];
-    nl::node tabdis = Tab["disabled"];
+    nxwz::node Tab = Item["Tab"];
+    nxwz::node taben = Tab["enabled"];
+    nxwz::node tabdis = Tab["disabled"];
 
-    nl::node close = nl::nx::ui["Basic.img"]["BtClose3"];
+    nxwz::node close = nxwz::nx::ui["Basic.img"]["BtClose3"];
     buttons_[Buttons::BT_CLOSE] = std::make_unique<MapleButton>(close);
 
     buttons_[Buttons::BT_TAB_EQUIP] =

@@ -18,8 +18,8 @@
 #include "GraphicsGL.h"
 
 namespace ms {
-Texture::Texture(nl::node src) {
-    if (src.data_type() == nl::node::type::bitmap) {
+Texture::Texture(nxwz::node src) {
+    if (src.data_type() == nxwz::node::type::bitmap) {
         origin_ = src["origin"];
 
         std::string source = src["source"];
@@ -43,7 +43,7 @@ Texture::Texture(nl::node src) {
                  ++child_node) {
                 auto found_node = child_node.resolve(_inlink);
 
-                if (found_node.data_type() == nl::node::type::bitmap) {
+                if (found_node.data_type() == nxwz::node::type::bitmap) {
                     src = found_node;
                     break;
                 }
@@ -96,13 +96,13 @@ Point<int16_t> Texture::get_dimensions() const {
     return dimensions_;
 }
 
-nl::node Texture::find_child(const nl::node &source, const std::string &link) {
+nxwz::node Texture::find_child(const nxwz::node &source, const std::string &link) {
     if (!link.empty()) {
-        nl::node parent_node = source.root();
+        nxwz::node parent_node = source.root();
 
         return parent_node.resolve(link.substr(link.find('/') + 1));
     }
 
-    return nl::node();
+    return nxwz::node();
 }
 }  // namespace ms
