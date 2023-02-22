@@ -38,7 +38,9 @@ function(add_clang_format_target)
         ${CMAKE_CURRENT_LIST_DIR}/Net/*/*/*.h
         ${CMAKE_CURRENT_LIST_DIR}/Template/*.h
         ${CMAKE_CURRENT_LIST_DIR}/Util/*.cpp 
-        ${CMAKE_CURRENT_LIST_DIR}/Util/*.h)
+        ${CMAKE_CURRENT_LIST_DIR}/Util/*.h
+        ${CMAKE_CURRENT_LIST_DIR}/Util/wz/*.cpp 
+        ${CMAKE_CURRENT_LIST_DIR}/Util/wz/*.h)
     message("Format the project using the `clang-format` target (i.e: cmake --build build --target clang-format).\n")
     endif()
 endfunction()

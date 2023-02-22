@@ -35,6 +35,8 @@ if(${PROJECT_NAME}_ENABLE_CLANG_TIDY)
          ${PROJECT_SOURCE_DIR}/src/Net/*/*/*.cpp
          ${PROJECT_SOURCE_DIR}/src/Util/*.h
          ${PROJECT_SOURCE_DIR}/src/Util/*.cpp
+         ${PROJECT_SOURCE_DIR}/src/Util/wz/*.h
+         ${PROJECT_SOURCE_DIR}/src/Util/wz/*.cpp 
          ${PROJECT_SOURCE_DIR}/src/Template/*.h
          ${PROJECT_SOURCE_DIR}/src/Gameplay/*.h
          ${PROJECT_SOURCE_DIR}/src/Gameplay/*.cpp

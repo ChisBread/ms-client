@@ -202,6 +202,7 @@ add_executable(msclient
     Util/GameInfo.cpp
     Util/StringHandling.cpp
     Util/NxFiles.cpp
+    Util/wz/node.cpp
     Configuration.cpp
     MSClient.cpp
     Game.cpp
